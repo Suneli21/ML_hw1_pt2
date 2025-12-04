@@ -47,6 +47,7 @@ streamlit run app.py
 
 ## Деплой приложения
 
+Приложение развёрнуто в streamlit cloud, можно протестировать его по ссылке:[ссылка на готовое приложение](https://mlhw1pt2-model-inference-and-eda.streamlit.app/)
 
 ## Выводы (копия выводов из части 6 ДЗ 1)
 
