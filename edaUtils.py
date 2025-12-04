@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import phik
-
+import os
 
 #============ очистка ==========
 def get_basic_info(df):
@@ -114,15 +114,22 @@ def process_torque_column(df, torque_column='torque'):
     return df
 
 
-def object_to_numeric_and_fillna(df):
+def object_to_numeric_and_fillna(df, fill_nan: bool=True, save_fill_values: bool=True, use_preloaded_fill_values: bool=False):
     df = df.apply(clean_numeric_col, axis=1)
     df[['mileage', 'engine', 'max_power']] = df[['mileage', 'engine', 'max_power']].astype('float')
     df = process_torque_column(df)
-    for col in df.columns:
-        if df[col].dtype != 'O':
-            fill_value = df[col].median()
-            df[col] = df[col].fillna(fill_value)
-            df[col] = df[col].fillna(fill_value)
+    fill_values = []
+    preloaded_fill_values = pd.read_csv('data/fill_values.csv', index_col='col') if os.path.exists('data/fill_values.csv') else None
+    if fill_nan:
+        for col in df.columns:
+            if df[col].dtype != 'O':
+                fill_value = df[col].median() if not use_preloaded_fill_values else preloaded_fill_values.loc[col].value
+                df[col] = df[col].fillna(fill_value)
+                if save_fill_values:
+                    fill_values.append({'col': col, 'value': fill_value})
+        if save_fill_values:
+            fill_values = pd.DataFrame(fill_values)
+            fill_values.to_csv(r'data/fill_values.csv', index=False)
 
     df[['engine', 'seats']] = df[['engine', 'seats']].astype('int')
     df['name'] = df['name'].apply(lambda x: x.lower().split()[0])
