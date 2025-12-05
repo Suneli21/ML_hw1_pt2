@@ -1,0 +1,11 @@
+name,year,km_driven,fuel,seller_type,transmission,owner,mileage,engine,max_power,torque,seats
+Maruti Vitara Brezza ZDi Plus,2017,25000,Diesel,Individual,Manual,First Owner,24.3 kmpl,1248 CC,88.5 bhp,200Nm@ 1750rpm,5.0
+Hyundai i10 Asta,2012,25000,Petrol,Individual,Manual,First Owner,20.36 kmpl,1197 CC,78.9 bhp,111.8Nm@ 4000rpm,5.0
+Ford Figo Diesel EXI,2011,90400,Diesel,Individual,Manual,First Owner,20.0 kmpl,1399 CC,68 bhp,160Nm@ 2000rpm,5.0
+Mahindra Xylo D4,2014,160000,Diesel,Individual,Manual,First Owner,14.95 kmpl,2489 CC,93.7 bhp,218Nm@ 1400-2600rpm,7.0
+Volvo V40 D3 R-Design,2018,2000,Diesel,Dealer,Automatic,First Owner,16.8 kmpl,1984 CC,150 bhp,350Nm@ 1500-2750rpm,5.0
+Tata Tiago 1.2 Revotron XT,2018,50000,Petrol,Individual,Manual,First Owner,23.84 kmpl,1199 CC,84 bhp,114Nm@ 3500rpm,5.0
+Tata Safari Storme EX,2015,110000,Diesel,Individual,Manual,First Owner,14.1 kmpl,2179 CC,147.94 bhp,320Nm@ 1500-3000rpm,7.0
+Hyundai i20 Magna 1.4 CRDi (Diesel),2013,70000,Diesel,Individual,Manual,Second Owner,21.9 kmpl,1396 CC,88.76 bhp,219.6Nm@ 1500-2750rpm,5.0
+Chevrolet Aveo U-VA 1.2 LS,2010,60000,Petrol,Individual,Manual,First Owner,15.26 kmpl,1150 CC,74.9 bhp,110Nm@ 4400rpm,5.0
+Hyundai Verna CRDi SX ABS,2009,120000,Diesel,Individual,Manual,First Owner,18.1 kmpl,1493 CC,110 bhp,"24@ 1,900-2,750(kgm@ rpm)",5.0

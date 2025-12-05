@@ -5,7 +5,6 @@ import pickle
 import matplotlib.pyplot as plt
 import io
 from sklearn.linear_model import Ridge
-from sklearn.metrics import r2_score, mean_squared_error as MSE
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from edaUtils import object_to_numeric_and_fillna, get_basic_info, get_num_cat_describe
@@ -87,9 +86,8 @@ if uploaded_file is not None:
 
                 st.dataframe(random_sample, width='stretch')
 
-            X_test = df_cleaned.drop(columns='selling_price')
+            X_test = df_cleaned.copy()
             X_test['seats'] = X_test['seats'].apply(lambda x: str(x))
-            y_test = np.log(df_cleaned['selling_price'])
             X_test = get_preprocessed_data(X_test)
             numeric_cols = X_test.select_dtypes(include=[np.number]).columns
 
@@ -98,12 +96,8 @@ if uploaded_file is not None:
             else:
                 preds = model.predict(X_test)
                 coefs = model.coef_
-                st.subheader("Метрики качества модели")
-                st.metric("R2-score", round(r2_score(y_test, preds), 4))
-                st.metric("MSE", round(MSE(y_test, preds), 4))
                 with st.expander(f"Случайные {n_samples} строк из очищенного датасета + предсказания"):
                     df_preds = df_cleaned.copy()
-                    df_preds = df_preds.drop(columns='selling_price')
                     df_preds['prediction'] = np.exp(preds) # возвращаем в изначальную шкалу
                     if df_preds.shape[0] >= n_samples:
                         random_sample = df_preds.sample(n=min(n_samples, len(df)), random_state=42)
